@@ -1,0 +1,15 @@
+Anda menemukan bahwa ada isu kritis yang mempengaruhi sistem production dan
+memerlukan koordinasi dengan tim support dan engineer. Jelaskan langkah-langkah
+yang akan Anda ambil untuk mengkoordinasikan penyelesaian masalah ini.
+
+Jawaban:
+
+Langkah pertama dalam menangani isu kritis pada sistem production adalah melakukan pengecekan terhadap isu yang dilaporkan melalui sistem monitoring, log error, dan indikator teknis lainnya. Seluruh hasil pengecekan beserta laporan dari pengguna dikumpulkan dan dianalisis untuk memverifikasi penyebab utama gangguan, seperti kegagalan transaksi, ketidakmampuan sistem dalam menghasilkan laporan, atau malfungsi fitur tertentu.
+
+Setelah data terkumpul, laporan lengkap disusun dan disampaikan kepada tim terkait seperti support, developer backend/frontend, dan DevOps melalui kanal komunikasi resmi seperti Microsoft Teams atau email. Laporan tersebut mencakup informasi detail mengenai jenis isu, sistem yang terdampak, dan dampaknya, sehingga tim support dapat memberikan respons yang tepat kepada pengguna akhir.
+
+Tim engineering bertugas melakukan troubleshooting untuk mengidentifikasi akar permasalahan dan menentukan solusi yang cepat serta efektif. Pembaruan progres penanganan disampaikan secara berkala kepada seluruh pihak yang berkepentingan. Jika penyelesaian tidak dapat segera dicapai atau tingkat kompleksitas tinggi, maka eskalasi dilakukan kepada level manajemen seperti team lead atau manajer untuk mendapatkan dukungan tambahan.
+
+Setelah perbaikan berhasil diterapkan di lingkungan production dan dipastikan tidak menimbulkan dampak negatif tambahan, informasi pemulihan disampaikan kepada tim support agar komunikasi lanjutan kepada pelanggan dapat segera dilakukan.
+
+Langkah terakhir adalah melakukan dokumentasi terhadap insiden yang terjadi, meliputi kronologi masalah, analisis akar penyebab, tindakan korektif yang dilakukan, serta rekomendasi langkah preventif jangka panjang untuk mencegah kejadian serupa di masa mendatang.

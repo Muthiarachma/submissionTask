@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Cek jumlah parameter
+if [ $# -ne 3 ]; then
+  echo "Usage: $0 <file_source> <username> <ip_address>"
+  exit 1
+fi
+
+SOURCE=$1
+USERNAME=$2
+IP=$3
+
+# Cek apakah file atau direktori sumber ada
+if [ ! -e "$SOURCE" ]; then
+  echo "File atau direktori $SOURCE tidak ditemukan."
+  exit 2
+fi
+
+# Jalankan perintah rsync
+echo "Menyalin $SOURCE ke $USERNAME@$IP:~ menggunakan rsync..."
+rsync -avz "$SOURCE" "$USERNAME@$IP:~"
+
+# Konfirmasi
+if [ $? -eq 0 ]; then
+  echo "Rsync berhasil."
+else
+  echo "Rsync gagal."
+fi

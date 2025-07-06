@@ -1,0 +1,12 @@
+1. Bagaimana memori dialokasikan dan dikelola dalam createList()?
+memori dialokasikan dan dikelola saat createList() dijalankan dan Ketika kita membuat objek Node, Java akan menyimpan objek tersebut didalam heap memory (tempat penyimpanan objek yang bisa diakses selama masih dibutuhkan). Sementara itu, variabel yang menunjuk ke objek itu disimpan di stack memory selama method berjalan. Karena Java memiliki sistem manajemen memori otomatis lewat Garbage Collector (GC), kita nggak perlu mengatur memori secara manual. Garbage Collector akan otomatis membersihkan objek-objek yang tidak lagi digunakan, sehingga tidak menyebabkan leak memory.
+
+
+
+2. Apa yang terjadi setelah createList() selesai?
+Jika node-node yang dibuat di dalam createList() yang telah dibuat dan tidak disimpan dalam variabel global ataupun tidak dikembalikan (return). maka ketika createList() selesai, semua objek itu akan dianggap “tidak terpakai” dan akan otomatis dibersihkan oleh Garbage Collector.Namun, kalau jika kita menyimpannya kedalam suatu variabel class atau mengembalikannya, objek tersebut tetap bisa diakses dan tidak akan dibersihkan.
+
+
+
+3. Apakah ada potensi memory leak di kode PairSum.java?
+Secara garis besar kode PairSum.java tidak akan menyebabkan memory leak. Objek seperti HashMap dan array hanya digunakan di dalam metode dan tidak disimpan dalam variabel global atau static, jadi setelah metode selesai, semuanya akan dibersihkan otomatis oleh Garbace Collector. Namun, kemungkinan terjadinya memory leak bisa terjadi kalau kita menggunakan seperti List, Map, atau variabel static dan tidak pernah menghapus value-value yang sudah tidak dibutuhkan. Sehingga semua data-data tersebut memakan banyak memory yang menyebabkan memory leak

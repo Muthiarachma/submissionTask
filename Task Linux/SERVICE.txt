@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Cek argumen
+if [ $# -ne 2 ]; then
+  echo "Usage: $0 <start|stop|status> <service_name>"
+  exit 1
+fi
+
+ACTION=$1
+SERVICE=$2
+
+# Eksekusi perintah sesuai aksi
+case "$ACTION" in
+  start)
+    sudo systemctl start "$SERVICE"
+    echo "Service $SERVICE telah dijalankan."
+    ;;
+  stop)
+    sudo systemctl stop "$SERVICE"
+    echo "Service $SERVICE telah dihentikan."
+    ;;
+  status)
+    sudo systemctl status "$SERVICE"
+    ;;
+  *)
+    echo "Aksi tidak dikenali: $ACTION"
+    echo "Gunakan start, stop, atau status."
+    exit 2
+    ;;
+esac

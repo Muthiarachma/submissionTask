@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Cek argumen
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 <target_directory>"
+  exit 1
+fi
+
+TARGET_DIR=$1
+
+# Buat direktori jika belum ada
+if [ ! -d "$TARGET_DIR" ]; then
+  echo "Membuat direktori: $TARGET_DIR"
+  mkdir -p "$TARGET_DIR"
+fi
+
+KEY_PATH="$TARGET_DIR/id_rsa"
+
+# Buat SSH key tanpa passphrase
+ssh-keygen -t rsa -b 4096 -f "$KEY_PATH" -N "" -q
+
+# Cek hasil
+if [ -f "$KEY_PATH" ] && [ -f "$KEY_PATH.pub" ]; then
+  echo "SSH key berhasil dibuat di:"
+  echo "Private: $KEY_PATH"
+  echo "Public : $KEY_PATH.pub"
+else
+  echo "Gagal membuat SSH key."
+  exit 2
+fi

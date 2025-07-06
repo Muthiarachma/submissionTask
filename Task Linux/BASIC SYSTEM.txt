@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Tentukan nama file log dengan timestamp
+LOG_FILE="/home/mobaxterm/Desktop/Parkee/log/system_update_$(date '+%Y%m%d_%H%M%S').log"
+
+# Fungsi untuk logging dan eksekusi perintah
+log_and_run() {
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] Menjalankan: $1" | tee -a "$LOG_FILE"
+  eval "$1" >> "$LOG_FILE" 2>&1
+  echo -e "---- Selesai ----\n" | tee -a "$LOG_FILE"
+}
+
+# Deteksi package manager
+if command -v apt > /dev/null; then
+  PM="apt"
+  log_and_run "sudo apt update"
+  log_and_run "sudo apt upgrade -y"
+elif command -v dnf > /dev/null; then
+  PM="dnf"
+  log_and_run "sudo dnf upgrade -y"
+elif command -v yum > /dev/null; then
+  PM="yum"
+  log_and_run "sudo yum update -y"
+elif command -v pacman > /dev/null; then
+  PM="pacman"
+  log_and_run "sudo pacman -Syu --noconfirm"
+else
+  echo "Tidak ditemukan package manager yang dikenal (apt, yum, dnf, pacman)." | tee -a "$LOG_FILE"
+  exit 1
+fi
+
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] Pembaruan dengan $PM selesai." | tee -a "$LOG_FILE"

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]; then
+  echo "Should to use: $0 <directory> <extension>"
+  exit 1
+fi
+
+DIRECTORY=$1
+EXTENSION=$2
+
+if [ ! -d "$DIRECTORY" ]; then
+  echo "Directory $DIRECTORY does not exist."
+  exit 2
+fi
+
+echo "Searching for *.$EXTENSION files in $DIRECTORY..."
+find "$DIRECTORY" -type f -name "*.$EXTENSION"
